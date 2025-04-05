@@ -49,7 +49,7 @@ class UserInterface:
             show_statistics(game, self)
 
         def restart_game_command():
-            restart_game_command(game, self)
+            self.game.restart_game(self)
 
 
         # Параметри кнопок
