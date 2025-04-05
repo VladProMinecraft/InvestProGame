@@ -29,8 +29,13 @@ class UserInterface:
         top_frame = Frame(self.root, bg="#0000FF", width=screen_width, height=100)
         top_frame.place(x=0, y=0)
 
-        Label(top_frame, text="InvestProMinecraft", font=("Arial", 24, "bold"),
-              bg="#0000FF", fg="white").place(relx=0.5, rely=0.5, anchor="center")
+        icon = PhotoImage(file="icon.png")
+        small_icon = icon.subsample(2, 2)  # Зменшує розмір у 2 рази по ширині та висоті
+
+        label = Label(top_frame, text="  InvestProMinecraft", font=("Arial", 24, "bold"),
+                      bg="#0000FF", fg="white", image=small_icon, compound="left")
+        label.image = small_icon  # зберегти посилання
+        label.place(relx=0.5, rely=0.5, anchor="center")
 
         self.label_sum.place(x=10, y=120, anchor="w")
 
