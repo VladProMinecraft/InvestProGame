@@ -1,8 +1,7 @@
-from tkinter import Frame, Button, Label, Tk
+from tkinter import Frame, Button, Label, Tk, PhotoImage
 from rules_window import show_rules
 from invest_window import invest
 from statistics_window import show_statistics
-from ui_operations import center_window
 
 #Клас який відповідає за взаємодію з користувачем
 
@@ -17,6 +16,11 @@ class UserInterface:
 
     def setup_ui(self, game):
         self.root.title("InvestProMinecraft")
+
+        # Додаємо іконку
+        icon = PhotoImage(file="icon.png")
+        self.root.iconphoto(False, icon)
+
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
         self.root.geometry(f"{screen_width}x{screen_height}+0+0")
@@ -43,7 +47,7 @@ class UserInterface:
             restart_game_command(game, self)
 
 
-        # Парамери кнопок
+        # Параметри кнопок
 
         Button(self.root, text="Rules", font=("Arial", 18), width=10, height=2, command=show_rules_command) \
             .place(x=10, rely=1.0, anchor="sw", y=-10)

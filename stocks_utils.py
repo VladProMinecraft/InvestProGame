@@ -1,6 +1,6 @@
 import yfinance as yf
 
-#бере ціну з yfinance
+# беремо ціну з yfinance
 
 def fetch_stock_price(symbol):
     try:
