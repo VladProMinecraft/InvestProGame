@@ -2,6 +2,8 @@ from tkinter import Frame, Button, Label, Tk, PhotoImage
 from rules_window import show_rules
 from invest_window import invest
 from statistics_window import show_statistics
+import sys
+import os
 
 #Клас який відповідає за взаємодію з користувачем
 
@@ -17,8 +19,17 @@ class UserInterface:
     def setup_ui(self, game):
         self.root.title("InvestProMinecraft")
 
+        # Отримуємо базовий шлях, враховуючи запуск з .exe
+        if getattr(sys, 'frozen', False):
+            base_path = sys._MEIPASS
+        else:
+            base_path = os.path.abspath(".")
+
+        icon_path = os.path.join(base_path, "icon.png")
+        icon = PhotoImage(file=icon_path)
+
+
         # Додаємо іконку
-        icon = PhotoImage(file="icon.png")
         self.root.iconphoto(False, icon)
 
         screen_width = self.root.winfo_screenwidth()
@@ -29,11 +40,10 @@ class UserInterface:
         top_frame = Frame(self.root, bg="#0000FF", width=screen_width, height=100)
         top_frame.place(x=0, y=0)
 
-        icon = PhotoImage(file="icon.png")
         small_icon = icon.subsample(2, 2)  # Зменшує розмір у 2 рази по ширині та висоті
-
         label = Label(top_frame, text="  InvestProMinecraft", font=("Arial", 24, "bold"),
                       bg="#0000FF", fg="white", image=small_icon, compound="left")
+
         label.image = small_icon  # зберегти посилання
         label.place(relx=0.5, rely=0.5, anchor="center")
 
